@@ -76,8 +76,8 @@ img { max-width: 100%; display: block; }
 }
 
 .logo .dot {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--sage);
   opacity: 0.5;
