@@ -4,6 +4,7 @@
 
 :root {
   --sage: #8A9A82;
+  --sage-deep: #5f6c56;
   --sage-soft: rgba(138, 154, 130, 0.16);
   --sage-mist: #AEB9A1;
   --ink: #2B2B28;
@@ -168,7 +169,7 @@ nav.main-nav a[aria-current="page"] {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #5f6c56;
+  color: var(--sage-deep);
   margin: 0 0 16px;
 }
 
@@ -235,6 +236,15 @@ section.block.alt { background: var(--paper-alt); }
 
 .section-head p { color: var(--bark); margin: 0; }
 
+.page-title {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 300;
+  margin: 0 0 18px;
+  max-width: 680px;
+}
+
+.page-intro { color: var(--bark); max-width: 620px; font-size: 17px; margin: 0; }
+
 hr.divider {
   border: none;
   height: 1px;
@@ -261,9 +271,13 @@ hr.divider {
   margin: 0 0 10px;
 }
 
+.card h3.lg { font-size: 22px; font-weight: 500; margin-bottom: 18px; }
+
 .card p { color: var(--bark); font-size: 15px; margin: 0; }
 
 .bullet-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.bullet-list.compact { gap: 10px; }
+.bullet-list.compact li { font-size: 15px; }
 
 .bullet-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px 36px; }
 @media (max-width: 640px) { .bullet-grid { grid-template-columns: 1fr; } }
@@ -301,6 +315,12 @@ hr.divider {
   margin: 0 8px 8px 0;
 }
 
+.note {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 20px 0 0;
+}
+
 /* ---------- Team ---------- */
 
 .person {
@@ -309,22 +329,34 @@ hr.divider {
   gap: 10px;
 }
 
-.person .avatar {
+.person .photo {
   width: 100%;
   aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 18%;
   border-radius: var(--radius);
   background: var(--sage-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: 300;
-  color: var(--sage);
 }
 
-.person h3 { margin: 4px 0 0; font-size: 17px; font-weight: 600; }
+.person h3 { margin: 8px 0 0; font-size: 19px; font-weight: 600; }
 .person .role { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
-.person p.bio { font-size: 14px; color: var(--bark); margin: 6px 0 0; }
+.person blockquote {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--sage-mist);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--bark);
+}
+
+.person-mini { display: flex; align-items: center; gap: 18px; }
+.person-mini img {
+  width: 88px; height: 88px; border-radius: 50%;
+  object-fit: cover; object-position: center 18%;
+  flex-shrink: 0;
+}
+.person-mini h3 { margin: 0; font-size: 17px; font-weight: 600; }
+.person-mini .role { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
 
 .placeholder-note {
   border: 1px dashed var(--border);
@@ -333,6 +365,16 @@ hr.divider {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* ---------- Tariffs ---------- */
+
+.tariff-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border); }
+.tariff-table th, .tariff-table td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 15px; }
+.tariff-table th { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.tariff-table td.code { font-size: 13px; color: var(--sage-deep); font-weight: 600; letter-spacing: 0.04em; white-space: nowrap; }
+.tariff-table td.price { text-align: right; font-weight: 500; white-space: nowrap; }
+.tariff-table th.price { text-align: right; }
+.tariff-table tr:last-child td { border-bottom: none; }
 
 /* ---------- Contact / info blocks ---------- */
 
@@ -415,4 +457,6 @@ footer.site-footer .foot-col a:hover { color: var(--sage); }
   .info-row { flex-direction: column; gap: 4px; }
   .info-row .label { width: auto; }
   footer.site-footer .wrap { flex-direction: column; }
+  .tariff-table th, .tariff-table td { padding: 10px 10px; font-size: 14px; }
+  .foot-bottom { padding: 20px 20px 0; }
 }
