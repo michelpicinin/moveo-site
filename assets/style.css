@@ -396,6 +396,16 @@ hr.divider {
 }
 .map-frame iframe { width: 100%; height: 100%; border: 0; }
 
+/* ---------- Classes ---------- */
+
+.class-tags { display: flex; flex-wrap: wrap; margin-top: 24px; }
+.class-tags .tag:first-child { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+.price-row:last-of-type { border-bottom: none; }
+.price-name { font-size: 17px; font-weight: 500; color: var(--ink); }
+.price-sub { font-size: 14px; color: var(--muted); }
+.price-amount { font-size: 28px; font-weight: 300; color: var(--ink); white-space: nowrap; }
+
 /* ---------- Footer ---------- */
 
 footer.site-footer {
