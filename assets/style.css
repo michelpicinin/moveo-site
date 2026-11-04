@@ -107,6 +107,11 @@ nav.main-nav a[aria-current="page"] {
   border-bottom-color: var(--sage);
 }
 
+/* Header order: logo + language/booking on the first row, menu on its own row below */
+.header-right { order: 2; }
+nav.main-nav { order: 3; width: 100%; justify-content: flex-start; }
+.site-header .wrap { row-gap: 14px; }
+
 .header-right {
   display: flex;
   align-items: center;
@@ -460,7 +465,7 @@ footer.site-footer .foot-col a:hover { color: var(--sage); }
 
 /* Two header buttons: move the menu to its own row before things get crowded */
 @media (max-width: 1120px) {
-  nav.main-nav { order: 3; width: 100%; justify-content: flex-start; gap: 18px; }
+  nav.main-nav { gap: 18px; }
   .site-header .wrap { padding-bottom: 14px; }
 }
 
