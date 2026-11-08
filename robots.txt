@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moveo.lu/sitemap.xml
