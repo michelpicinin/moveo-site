@@ -484,4 +484,21 @@ footer.site-footer .foot-col a:hover { color: var(--sage); }
   .header-cta { padding: 9px 10px; font-size: 12px; min-width: 0; flex: 1 1 0; }
   .header-right { gap: 8px; width: 100%; }
   .lang-switch { flex-basis: 100%; }
+
+  /* All menu items side by side on one row; text scales with the screen so the longest labels (FR) still fit */
+  .site-header .wrap { row-gap: 6px; padding-bottom: 4px; }
+  nav.main-nav { flex-wrap: nowrap; justify-content: space-between; gap: 0; width: calc(100% + 6px); margin: 0 -3px; }
+  nav.main-nav a { font-size: min(14px, 3.4vw); letter-spacing: 0; white-space: nowrap; padding: 10px 3px; }
+}
+
+/* French labels are the longest: let the menu use a little of the side margin */
+@media (max-width: 419px) {
+  html[lang="fr"] nav.main-nav { width: calc(100% + 24px); margin: 0 -12px; }
+}
+
+/* Very small phones: same for all languages, and long title words may break instead of widening the page */
+@media (max-width: 359px) {
+  nav.main-nav { width: calc(100% + 24px); margin: 0 -12px; }
+  nav.main-nav a { padding-left: 2px; padding-right: 2px; }
+  h1 { hyphens: auto; overflow-wrap: break-word; }
 }
