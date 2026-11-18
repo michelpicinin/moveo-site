@@ -580,3 +580,29 @@ section.visit-bg .map-frame { box-shadow: 0 12px 34px rgba(43, 43, 40, 0.12); }
   }
   section.visit-bg .wrap.grid-2 > * { grid-column: 1; }
 }
+
+/* Leistungen: Behandlungsfoto rechts im Seitenkopf, nach links auslaufend */
+section.head-treatment { position: relative; overflow: hidden; padding-bottom: 88px; }
+section.head-treatment::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 48%;
+  z-index: 0;
+  background: url(treatments/physiotherapie.jpg) left center / auto 100% no-repeat;
+  opacity: 0.9;
+  transform: scaleX(-1); /* gespiegelt: Therapeut rechts, Blick zum Text */
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 50%, rgba(0,0,0,.35) 72%, transparent 88%);
+  mask-image: linear-gradient(to right, #000 0, #000 50%, rgba(0,0,0,.35) 72%, transparent 88%);
+}
+section.head-treatment .wrap { position: relative; z-index: 1; }
+section.head-treatment .page-title,
+section.head-treatment .page-intro { max-width: 520px; }
+@media (max-width: 860px) {
+  section.head-treatment { padding-top: 280px !important; padding-bottom: 48px; }
+  section.head-treatment::before {
+    width: 100%; height: 320px; bottom: auto; background-size: cover; background-position: center 45%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+  }
+}
