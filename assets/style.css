@@ -26,7 +26,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: var(--paper);
+  background: var(--paper) url(topo.svg) 0 0 / 1600px 1600px repeat;
   color: var(--ink);
   font-weight: 400;
   line-height: 1.6;
@@ -222,7 +222,7 @@ nav.main-nav { order: 3; width: 100%; justify-content: flex-start; }
 
 section.block { padding: 64px 0; }
 section.block.tight { padding: 40px 0; }
-section.block.alt { background: var(--paper-alt); }
+section.block.alt { background: rgba(240, 237, 229, 0.62); }
 
 .section-head { margin-bottom: 36px; max-width: 640px; }
 
@@ -512,16 +512,17 @@ footer.site-footer .foot-col a:hover { color: var(--sage); }
   inset: 0 0 0 auto;
   width: 100%;
   z-index: 0;
-  background: url(rooms/behandlungsraum-hero.jpg) center 55% / cover no-repeat;
+  /* Foto halb transparent über Papierweiß, deckt die Höhenlinien ab */
+  background: linear-gradient(rgba(247,245,241,.5), rgba(247,245,241,.5)), url(rooms/behandlungsraum-hero.jpg) center 55% / cover no-repeat, var(--paper);
   -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.42) 0, rgba(0,0,0,.6) 38%, #000 62%);
   mask-image: linear-gradient(to right, rgba(0,0,0,.42) 0, rgba(0,0,0,.6) 38%, #000 62%);
-  opacity: 0.5;
+  opacity: 1;
 }
 .hero.hero-photo h1 { max-width: 520px; }
 .hero.hero-photo p.lead { max-width: 460px; color: var(--ink); }
 .hero.hero-photo .btn-outline { background: rgba(247, 245, 241, 0.85); }
 @media (max-width: 860px) {
-  .hero.hero-photo .hero-img { width: 100%; opacity: 0.16; -webkit-mask-image: none; mask-image: none; }
+  .hero.hero-photo .hero-img { width: 100%; background: linear-gradient(rgba(247,245,241,.84), rgba(247,245,241,.84)), url(rooms/behandlungsraum-hero.jpg) center 55% / cover no-repeat, var(--paper); -webkit-mask-image: none; mask-image: none; }
 }
 
 /* Drei Raum-Kreise */
@@ -635,4 +636,37 @@ section.head-yoga .class-tags { max-width: 560px; }
     -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
   }
+}
+
+/* ---------- Höhenlinien-Hintergrund & Einblenden beim Scrollen ---------- */
+/* Hintergrund: body trägt das Höhenlinien-Muster (assets/topo.svg), Abschnitte sind durchscheinend. */
+footer.site-footer { background: rgba(247, 245, 241, 0.7); }
+/* Abschnitte mit Hintergrundfoto: fester Papiergrund, keine Höhenlinien auf oder neben dem Foto */
+section.hero-photo,
+section.head-treatment,
+section.head-yoga { background: var(--paper); }
+section.block.alt.visit-bg { background: var(--paper-alt); }
+
+/* Einblenden: nur aktiv, wenn reveal.js läuft (Klasse reveal-on auf <html>) */
+html.reveal-on .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+html.reveal-on .reveal.is-visible { opacity: 1; transform: none; }
+.room-circles figure:nth-child(even).reveal.is-visible { transform: translateY(28px); }
+html.reveal-on .room-circles figure:nth-child(even).reveal:not(.is-visible) { transform: translateY(54px); }
+/* Foto-Abschnitte: Papiergrund und Foto blenden langsam über die Höhenlinien */
+section.reveal-bg { transition: background-color 1.4s ease 0.5s; }
+section.reveal-bg::before,
+section.reveal-bg .hero-img { transition: opacity 1.8s ease 0.5s; }
+html.reveal-on section.reveal-bg:not(.bg-visible) { background-color: transparent !important; }
+html.reveal-on section.reveal-bg:not(.bg-visible)::before,
+html.reveal-on section.reveal-bg:not(.bg-visible) .hero-img { opacity: 0 !important; }
+@media (max-width: 560px) {
+  .room-circles figure:nth-child(even).reveal.is-visible { transform: translateY(16px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-on .reveal { opacity: 1; transform: none; transition: none; }
 }
