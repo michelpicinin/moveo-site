@@ -607,3 +607,32 @@ section.head-treatment .page-intro { max-width: 520px; }
     mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
   }
 }
+
+/* Kurse: Yoga-Nahaufnahme rechts im Seitenkopf, nach links auslaufend */
+section.head-yoga { position: relative; overflow: hidden; padding-bottom: 88px; }
+section.head-yoga::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: auto;
+  width: 46%;
+  height: auto;
+  border-radius: 0;
+  z-index: 0;
+  background: url(treatments/yoga-krieger.jpg) center 25% / cover no-repeat;
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(to left, #000 0, #000 45%, rgba(0,0,0,.35) 70%, transparent 88%);
+  mask-image: linear-gradient(to left, #000 0, #000 45%, rgba(0,0,0,.35) 70%, transparent 88%);
+}
+section.head-yoga .wrap { position: relative; z-index: 1; }
+section.head-yoga .page-title,
+section.head-yoga .page-intro,
+section.head-yoga .class-tags { max-width: 560px; }
+@media (max-width: 860px) {
+  section.head-yoga { padding-top: 300px !important; padding-bottom: 48px; }
+  section.head-yoga::before {
+    width: 100%; height: 340px; bottom: auto;
+    background-size: cover; background-position: center 20%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+  }
+}
