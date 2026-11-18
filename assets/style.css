@@ -562,24 +562,28 @@ section.visit-bg::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: 62%;
+  width: 64%;
   z-index: 0;
-  background: url(rooms/anmeldung-wide.jpg) right 55% / cover no-repeat;
-  opacity: 0.9;
-  -webkit-mask-image: linear-gradient(to right, #000 0, #000 45%, rgba(0,0,0,.3) 75%, transparent 92%);
-  mask-image: linear-gradient(to right, #000 0, #000 45%, rgba(0,0,0,.3) 75%, transparent 92%);
+  /* ganzes Foto in voller Höhe: Durchblick in den Raum links, Theke und Pflanze */
+  /* leicht hineingezoomt: Tür links zu ca. 3/4 sichtbar */
+  background: url(rooms/anmeldung-raum.jpg) -110px 55% / auto 106% no-repeat;
+  opacity: 0.8;
+  /* lange voll sichtbar, dann kurzer, schneller Verlauf vor der Textspalte */
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 62%, rgba(0,0,0,.35) 72%, transparent 82%);
+  mask-image: linear-gradient(to right, #000 0, #000 62%, rgba(0,0,0,.35) 72%, transparent 82%);
 }
 section.visit-bg .wrap { position: relative; z-index: 1; }
-section.visit-bg .wrap.grid-2 { row-gap: 28px; }
+section.visit-bg .wrap.grid-2 { row-gap: 28px; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
 section.visit-bg .wrap.grid-2 > * { grid-column: 2; }
 section.visit-bg .map-frame { box-shadow: 0 12px 34px rgba(43, 43, 40, 0.12); }
 @media (max-width: 860px) {
   section.visit-bg { padding-top: 260px; }
   section.visit-bg::before {
-    width: 100%; height: 300px; bottom: auto; opacity: 0.9;
+    width: 100%; height: 300px; bottom: auto; opacity: 0.9; background-size: cover; background-position: center 60%;
     -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
   }
+  section.visit-bg .wrap.grid-2 { grid-template-columns: 1fr; }
   section.visit-bg .wrap.grid-2 > * { grid-column: 1; }
 }
 
@@ -669,4 +673,29 @@ html.reveal-on section.reveal-bg:not(.bg-visible) .hero-img { opacity: 0 !import
 }
 @media (prefers-reduced-motion: reduce) {
   html.reveal-on .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Karriere: Foto (MOVEO-Shirt) rechts im Seitenkopf, nach links auslaufend */
+section.head-career { position: relative; overflow: hidden; padding-bottom: 88px; background: var(--paper); }
+section.head-career::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: auto;
+  width: 44%;
+  z-index: 0;
+  background: url(treatments/karriere.jpg) center 45% / cover no-repeat;
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(to left, #000 0, #000 45%, rgba(0,0,0,.35) 70%, transparent 90%);
+  mask-image: linear-gradient(to left, #000 0, #000 45%, rgba(0,0,0,.35) 70%, transparent 90%);
+}
+section.head-career .wrap { position: relative; z-index: 1; }
+section.head-career .page-title,
+section.head-career .page-intro { max-width: 560px; }
+@media (max-width: 860px) {
+  section.head-career { padding-top: 300px !important; padding-bottom: 48px; }
+  section.head-career::before {
+    width: 100%; height: 340px; bottom: auto; background-position: center 72%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+  }
 }
