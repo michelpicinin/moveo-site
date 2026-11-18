@@ -502,3 +502,54 @@ footer.site-footer .foot-col a:hover { color: var(--sage); }
   nav.main-nav a { padding-left: 2px; padding-right: 2px; }
   h1 { hyphens: auto; overflow-wrap: break-word; }
 }
+
+/* ---------- Raumfotos (Startseite) ---------- */
+
+/* Hero: Foto rechts, weich ins Papier verblendet */
+.hero.hero-photo::before { display: none; }
+.hero.hero-photo .hero-img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 100%;
+  z-index: 0;
+  background: url(rooms/behandlungsraum-hero.jpg) center 55% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.42) 0, rgba(0,0,0,.6) 38%, #000 62%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,.42) 0, rgba(0,0,0,.6) 38%, #000 62%);
+  opacity: 0.5;
+}
+.hero.hero-photo h1 { max-width: 520px; }
+.hero.hero-photo p.lead { max-width: 460px; color: var(--ink); }
+.hero.hero-photo .btn-outline { background: rgba(247, 245, 241, 0.85); }
+@media (max-width: 860px) {
+  .hero.hero-photo .hero-img { width: 100%; opacity: 0.16; -webkit-mask-image: none; mask-image: none; }
+}
+
+/* Drei Raum-Kreise */
+.room-circles {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 4vw, 48px);
+  max-width: 860px;
+  margin-top: 44px;
+  padding-bottom: 28px;
+}
+.room-circles figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.room-circles figure:nth-child(2) { transform: translateY(28px); }
+.room-circles img { width: 100%; height: auto; max-width: 240px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
+.room-circles figcaption { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); text-align: center; }
+.room-circles::before {
+  content: ""; position: absolute; right: -10px; top: -22px;
+  width: 84px; aspect-ratio: 1; border-radius: 50%;
+  border: 1.5px solid var(--sage); opacity: 0.45;
+}
+.room-circles::after {
+  content: ""; position: absolute; left: 31%; bottom: 46px;
+  width: 26px; aspect-ratio: 1; border-radius: 50%;
+  background: var(--sage); opacity: 0.8;
+}
+@media (max-width: 560px) {
+  .room-circles figure:nth-child(2) { transform: translateY(16px); }
+  .room-circles figcaption { font-size: 10px; letter-spacing: 0.08em; }
+  .room-circles::before, .room-circles::after { display: none; }
+}
