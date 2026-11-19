@@ -20,7 +20,7 @@
       i++;
     });
   });
-  var photoSections = document.querySelectorAll('section.hero-photo, section.head-treatment, section.head-yoga, section.head-career, section.visit-bg');
+  var photoSections = document.querySelectorAll('section.hero-photo, section.head-treatment, section.head-yoga, section.head-career, section.head-contact, section.visit-bg');
   targets.forEach(function (el) { el.classList.add('reveal'); });
   photoSections.forEach(function (s) { s.classList.add('reveal-bg'); });
   document.documentElement.classList.add('reveal-on');

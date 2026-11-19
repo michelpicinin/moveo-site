@@ -689,3 +689,31 @@ section.head-career .page-intro { max-width: 560px; }
     mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
   }
 }
+
+/* Kontakt: Durchblick durch den Rundbogen (Foto 025) rechts im Seitenkopf, nach links auslaufend */
+/* Links unter der Schrift bleiben die Höhenlinien sichtbar; zum Foto hin deckt ein Papierverlauf sie ab */
+section.head-contact { position: relative; overflow: hidden; padding-bottom: 88px;
+  background: linear-gradient(to right, rgba(247,245,241,0) 0, rgba(247,245,241,0) 34%, var(--paper) 58%, var(--paper) 100%); }
+section.head-contact::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: auto;
+  width: 44%;
+  z-index: 0;
+  background: url(treatments/kontakt.jpg) center 62% / cover no-repeat;
+  opacity: 1;
+  -webkit-mask-image: linear-gradient(to left, #000 0, #000 62%, rgba(0,0,0,.5) 80%, transparent 96%);
+  mask-image: linear-gradient(to left, #000 0, #000 62%, rgba(0,0,0,.5) 80%, transparent 96%);
+}
+section.head-contact .wrap { position: relative; z-index: 1; }
+section.head-contact .page-title,
+section.head-contact .page-intro { max-width: 560px; }
+@media (max-width: 860px) {
+  section.head-contact { padding-top: 300px !important; padding-bottom: 48px;
+    background: linear-gradient(to bottom, var(--paper) 0, var(--paper) 240px, rgba(247,245,241,0) 420px); }
+  section.head-contact::before {
+    width: 100%; height: 340px; bottom: auto; background-position: center 70%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
+  }
+}
