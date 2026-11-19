@@ -539,21 +539,11 @@ footer.site-footer .foot-col a:hover { color: var(--sage); }
 .room-circles figure:nth-child(even) { transform: translateY(28px); }
 .room-circles img { width: 100%; height: auto; max-width: 210px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
 .room-circles figcaption { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage-deep); text-align: center; }
-.room-circles::before {
-  content: ""; position: absolute; right: -10px; top: -22px;
-  width: 84px; aspect-ratio: 1; border-radius: 50%;
-  border: 1.5px solid var(--sage); opacity: 0.45;
-}
-.room-circles::after {
-  content: ""; position: absolute; left: 24%; bottom: 46px;
-  width: 26px; aspect-ratio: 1; border-radius: 50%;
-  background: var(--sage); opacity: 0.8;
-}
+/* Ring und Punkt bei den Raum-Kreisen entfernt (19.11.2026): nur Fotos und Text auf dem Höhenlinien-Hintergrund */
 @media (max-width: 560px) {
   .room-circles { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
   .room-circles figure:nth-child(even) { transform: translateY(16px); }
   .room-circles figcaption { font-size: 10px; letter-spacing: 0.08em; }
-  .room-circles::before, .room-circles::after { display: none; }
 }
 
 /* Besuch uns: Anmeldung links als Hintergrund, Text und Karte rechts übereinander */
