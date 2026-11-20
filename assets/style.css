@@ -717,3 +717,20 @@ section.head-contact .page-intro { max-width: 560px; }
     mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
   }
 }
+
+/* Kontakt + Karriere (Desktop): Foto in voller Höhe zeigen, nicht oben/unten abschneiden.
+   Der Kopf wird höher, die Fotofläche bekommt das Seitenverhältnis des Fotos. */
+@media (min-width: 861px) {
+  section.head-career, section.head-contact { min-height: 600px; padding-bottom: 56px; }
+  section.head-career .wrap, section.head-contact .wrap {
+    min-height: 488px; display: flex; flex-direction: column; justify-content: center; }
+  section.head-career::before, section.head-contact::before {
+    width: auto; max-width: 52%; background-size: cover; background-position: center center; }
+  section.head-career::before { aspect-ratio: 933 / 1300; }
+  section.head-contact::before { aspect-ratio: 933 / 1340; }
+  section.head-career::before, section.head-contact::before {
+    -webkit-mask-image: linear-gradient(to left, #000 0, #000 60%, rgba(0,0,0,.45) 82%, transparent 100%);
+    mask-image: linear-gradient(to left, #000 0, #000 60%, rgba(0,0,0,.45) 82%, transparent 100%); }
+  section.head-contact {
+    background: linear-gradient(to right, rgba(247,245,241,0) 0, rgba(247,245,241,0) 48%, var(--paper) 68%, var(--paper) 100%); }
+}
