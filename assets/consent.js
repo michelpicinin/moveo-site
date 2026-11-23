@@ -12,7 +12,7 @@
       accept: 'Akzeptieren', reject: 'Ablehnen', settings: 'Cookie-Einstellungen'
     },
     fr: {
-      text: 'Nous utilisons des cookies Google Analytics pour comprendre comment notre site est utilisé. Ils ne sont déposés qu’avec ton accord.',
+      text: 'Nous utilisons des cookies Google Analytics pour comprendre comment notre site est utilisé. Ils ne sont déposés qu’avec votre accord.',
       accept: 'Accepter', reject: 'Refuser', settings: 'Paramètres des cookies'
     },
     en: {

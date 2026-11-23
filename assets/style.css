@@ -757,4 +757,5 @@ section.head-contact .page-intro { max-width: 560px; }
 .consent-actions { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
 .consent-actions .btn { padding: 10px 20px; cursor: pointer; font-family: inherit; }
 .consent-actions .btn-outline { background: transparent; }
-.foot-bottom .consent-link { margin-left: 16px; }
+.foot-bottom { justify-content: flex-start; column-gap: 24px; }
+.foot-bottom > span { margin-right: auto; }
